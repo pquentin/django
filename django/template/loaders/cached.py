@@ -32,6 +32,10 @@ class Loader(BaseLoader):
         Helper method. Lookup the template :param name: in all the configured loaders
         """
         key = self.cache_key(name, dirs)
+        if key in self.find_template_cache:
+            print('GOOD {} -> {}'.format(name, key))
+        else:
+            print('BAAD {} -> {}'.format(name, key))
         try:
             result = self.find_template_cache[key]
         except KeyError:
